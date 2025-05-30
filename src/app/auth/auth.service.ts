@@ -9,11 +9,11 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   signup(data: any) {
-    return this.http.post<{ message: string }>(`${this.base}/signup`, data);
+    return this.http.post<{ message: string }>(`${this.base}/signup`, data, { withCredentials: true });
   }
 
   login(data: any) {
-    return this.http.post<{ token: string }>(`${this.base}/login`, data);
+    return this.http.post<{ token: string }>(`${this.base}/login`, data, { withCredentials: true });
   }
 
   storeToken(token: string) {
