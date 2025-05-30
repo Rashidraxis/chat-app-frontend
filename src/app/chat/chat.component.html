@@ -1,0 +1,38 @@
+<div class="chat-wrapper">
+  <!-- Active Users Sidebar -->
+  <div class="user-list">
+    <h4>Active Users</h4>
+    <ul>
+      <li *ngFor="let user of users">👤 {{ user }}</li>
+    </ul>
+  </div>
+
+  <!-- Chat Section -->
+  <div class="chat-main">
+    <!-- Messages -->
+    <div class="messages">
+      <div *ngFor="let msg of messages">
+        <ng-container *ngIf="!msg.system; else systemMsg">
+          <strong>{{ msg.username }}</strong>: {{ msg.text }}
+          <span class="timestamp">{{ msg.timestamp | date:'shortTime' }}</span>
+        </ng-container>
+        <ng-template #systemMsg>
+          <em>{{ msg.text }}</em>
+          <span class="timestamp">{{ msg.timestamp | date:'shortTime' }}</span>
+        </ng-template>
+      </div>
+    </div>
+
+
+    <!-- Typing Indicator -->
+    <div *ngIf="typingUser" class="typing-indicator">
+      {{ typingUser }} is typing...
+    </div>
+
+    <!-- Input Form -->
+    <form (submit)="sendMessage(); $event.preventDefault()" class="chat-form">
+      <input [(ngModel)]="messageText" name="message" placeholder="Type a message..." (keydown)="onKeyPress()" />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</div>
