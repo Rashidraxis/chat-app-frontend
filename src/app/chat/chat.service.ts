@@ -7,7 +7,7 @@ import { io, Socket } from 'socket.io-client';
 @Injectable({ providedIn: 'root' })
 export class ChatService {
   private socket!: Socket;
-  private base = 'http://localhost:3000'; // NestJS backend
+  private base = 'https://chat-app-backend-zi5c.onrender.com'; // NestJS backend
 
   constructor(private http: HttpClient) {}
 
