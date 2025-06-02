@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private base = 'https://chat-app-backend-zi5c.onrender.com'; // Update with your backend URL
+  private base = 'https://chat-app-backend-zi5c.onrender.com/auth'; // Update with your backend URL
 
   constructor(private http: HttpClient, private router: Router) {}
 
